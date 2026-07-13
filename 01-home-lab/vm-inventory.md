@@ -2,75 +2,71 @@
 
 ## Purpose
 
-This document tracks virtual machines used in the AI Cyber Defense Lab.
+This document tracks virtual machines and lab storage used in the AI Cyber Defense Lab.
 
-The purpose of the inventory is to document what systems exist, what they are used for, and what boundaries apply to them.
+The purpose of the inventory is to document what systems exist, what they are used for, where they are stored, and what boundaries apply to them.
 
-## Inventory Table
+## Host Machine
 
-| VM Name | Role | Operating System | Network Mode | Internet Access | Status | Notes |
-|---|---|---|---|---|---|---|
-| Kali Linux | Analyst / testing VM | Kali Linux | To be determined | Limited / controlled | Planned | Used only in authorized labs |
-| Vulnerable Target 1 | Lab target | To be determined | Isolated preferred | No, unless needed | Planned | Example: Metasploitable, DVWA, Juice Shop |
-| Windows Test VM | Evidence / victim VM | Windows | To be determined | Limited / controlled | Planned | Used for Windows logs and DFIR practice |
-| Linux Test VM | Evidence / victim VM | Linux | To be determined | Limited / controlled | Planned | Used for Linux logs and auth log practice |
+| Item | Details |
+|---|---|
+| Device | MSI Cyborg 15 A12VF |
+| Operating System | Windows 11 |
+| CPU | 12th Gen Intel Core i7-12650H |
+| RAM | 16 GB |
+| GPU | NVIDIA GeForce RTX 4060 Laptop GPU, 8 GB |
+| Internal Storage | 954 GB total |
+| Internal Storage Used | 842 GB used |
+| Approximate Internal Free Space | 112 GB |
 
-## VM Roles
+## Lab Capacity Assessment
 
-### Analyst / Testing VM
+This machine can support a lean-to-medium cybersecurity lab.
 
-The analyst VM is the system used to run tools, observe traffic, collect evidence, and practice commands.
+Recommended beginner operating model:
 
-Initial planned analyst VM:
+- Run Kali Linux plus one target VM at a time.
+- Avoid running multiple heavy VMs at once.
+- Keep vulnerable target systems isolated.
+- Delay heavier Windows test VM work unless storage and performance allow it.
+- Store large VM files on an external drive instead of the internal laptop drive.
 
-- Kali Linux
+## External Lab Storage Plan
 
-### Vulnerable Target VM
+Heavy lab assets will be stored on an external drive instead of the laptop's internal drive.
 
-The vulnerable target VM is intentionally unsafe and must be isolated.
+External lab folder location:
 
-Possible examples:
+D:\Cyber-Fu-Lab
 
-- Metasploitable
-- DVWA
-- OWASP Juice Shop
-- Intentionally vulnerable CTF boxes
+External lab folder structure:
 
-These systems should not be exposed to the public internet.
+- Cyber-Fu-Lab/
+  - VMs/
+    - Kali/
+    - Targets/
+    - Windows-Test/
+    - Snapshots/
+  - ISOs/
+    - Kali/
+    - Windows/
+    - Linux/
+  - Evidence/
+    - screenshots/
+    - packet-captures/
+    - logs/
+  - Backups/
 
-### Windows Test VM
+Purpose:
 
-A Windows test VM may be used for:
+- Keep large VM files off the internal laptop drive.
+- Preserve internal storage for Windows, tools, and normal work.
+- Keep lab assets organized.
+- Make backups easier.
+- Reduce risk of mixing lab evidence with personal or work files.
 
-- Event Viewer practice
-- Login event review
-- Suspicious login simulations
-- Sysinternals practice
-- Basic DFIR artifact review
+Important rule:
 
-### Linux Test VM
+The GitHub repository stores documentation and sanitized artifacts. The external drive stores heavy VM files, ISOs, captures, screenshots, and working evidence.
 
-A Linux test VM may be used for:
-
-- Auth log review
-- SSH login practice
-- File permission practice
-- Process and service observation
-- Bash command practice
-
-## Snapshot Plan
-
-Snapshots should be taken:
-
-- After a clean install
-- Before major configuration changes
-- Before intentionally vulnerable lab activity
-- Before risky experiments
-- After a known-good configuration
-
-Snapshot naming format:
-
-```text
-YYYY-MM-DD_clean-install
-YYYY-MM-DD_before-lab-name
-YYYY-MM-DD_after-config-change
+Before anything from the external drive is copied into the public GitHub repository, it must be reviewed for sensitive data.
