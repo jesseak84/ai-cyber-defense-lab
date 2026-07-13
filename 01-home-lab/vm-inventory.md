@@ -33,7 +33,7 @@ Recommended beginner operating model:
 
 ## External Lab Storage Plan
 
-Heavy lab assets will be stored on an external drive instead of the laptop's internal drive.
+Heavy lab assets will be stored on the external D: drive.
 
 External lab folder location:
 
@@ -42,11 +42,7 @@ D:\Cyber-Fu-Lab
 External lab folder structure:
 
 - Cyber-Fu-Lab/
-  - VMs/
-    - Kali/
-    - Targets/
-    - Windows-Test/
-    - Snapshots/
+  - VMs-Archive/
   - ISOs/
     - Kali/
     - Windows/
@@ -59,14 +55,44 @@ External lab folder structure:
 
 Purpose:
 
-- Keep large VM files off the internal laptop drive.
-- Preserve internal storage for Windows, tools, and normal work.
+- Store large downloads, ISOs, backups, evidence, and archived VMs outside the laptop's internal drive.
+- Keep the internal C: drive available for active VMs that need better performance.
 - Keep lab assets organized.
 - Make backups easier.
 - Reduce risk of mixing lab evidence with personal or work files.
 
 Important rule:
 
-The GitHub repository stores documentation and sanitized artifacts. The external drive stores heavy VM files, ISOs, captures, screenshots, and working evidence.
+The GitHub repository stores documentation and sanitized artifacts.
+
+The internal C: drive stores active VMs.
+
+The external D: drive stores ISOs, backups, evidence, and archived VMs.
 
 Before anything from the external drive is copied into the public GitHub repository, it must be reviewed for sensitive data.
+
+## Active VM Storage Plan
+
+The internal laptop drive now has enough free space to run active VMs more efficiently.
+
+Active VM location:
+
+C:\Cyber-Fu-Lab\Active-VMs
+
+Active VM folder structure:
+
+- Active-VMs/
+  - Kali/
+  - Targets/
+  - Windows-Test/
+
+Storage/archive location:
+
+D:\Cyber-Fu-Lab
+
+Storage rule:
+
+- Active VMs that need better performance should run from the internal C: drive.
+- Large downloads, ISOs, backups, evidence, and archived VMs should be stored on the external D: drive.
+- The external D: drive is a spinning hard drive, so it is better for storage than active VM performance.
+- Only one main lab target should run alongside Kali at a time unless performance is confirmed stable.
